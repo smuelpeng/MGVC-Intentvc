@@ -1,0 +1,45 @@
+messages = [
+    {
+        "role": "system",
+        "content": (
+            "You are a professional video captioning assistant, specialized in generating objective and concise descriptions for short video clips. "
+            "Your sole task is to describe what is happening in the video, focusing on the object inside the red bounding box. "
+            "The object in the bounding box is a vehicle license plate. "
+            "Your caption must be a single, third-person, present-tense declarative sentence."
+        )
+    },
+    {
+        "role": "user",
+        "content": [
+            {
+                "type": "video",
+                "video": frame_list,
+                "fps": 1.0
+            },
+            {
+                "type": "text",
+                "text": (
+                    "Generate one English caption that objectively describes what is happening in the given video clip, focusing primarily on **the license plate inside the red bounding box**.\n\n"
+                    "Your caption should fulfill the following requirements:\n"
+                    "1. Describe the license plate’s location and appearance (e.g., green license plate on rear of red car, plate mounted on spare tire).\n"
+                    "2. Mention visible text on the plate if clearly readable (e.g., displays BESTIA).\n"
+                    "3. Include the vehicle type if visible and relevant (e.g., jeep, motorcycle, truck, car).\n"
+                    "4. Mention the motion or activity of the vehicle only when relevant (e.g., driving, unloading, navigating traffic).\n"
+                    "5. Mention surrounding environment only if it helps clarify visibility or action (e.g., on highway, near other cars, under sunlight).\n"
+                    "6. Use 15–25 words, one declarative sentence. No punctuation.\n\n"
+                    "Do NOT:\n"
+                    "- Use subjective or speculative terms (e.g., 'appears to be', 'seems like').\n"
+                    "- Generate more than one sentence.\n"
+                    "- Use first-person or second-person phrasing.\n"
+                    "- Use any punctuation marks, only words and spaces.\n\n"
+                    f"Here is a related caption for this video:\n{dam_caption}\n"
+                    "Format your response strictly as a JSON object with a single key 'object' and the caption string as the value. For example:\n"
+                    "{\n"
+                    f'  "object": "{rag_captions[video_id]}"\n'
+                    "}\n\n"
+                    "Now generate the caption based on the input video and red bounding box annotations."
+                )
+            }
+        ]
+    }
+]

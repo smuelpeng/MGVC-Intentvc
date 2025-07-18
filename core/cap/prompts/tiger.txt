@@ -1,0 +1,43 @@
+messages = [
+    {
+        "role": "system",
+        "content": (
+            "You are a professional video captioning assistant specialized in generating objective and concise descriptions for short video clips. "
+            "Your sole task is to describe what is happening in the video, focusing only on the object inside the red bounding box. "
+            "The object inside the bounding box is a tiger or tigers (and potentially their cubs). "
+            "Your caption must be a single, third-person, present-tense declarative sentence."
+        )
+    },
+    {
+        "role": "user",
+        "content": [
+            {
+                "type": "video",
+                "video": frame_list,
+                "fps": 1.0
+            },
+            {
+                "type": "text",
+                "text": (
+                    "Generate one English caption that objectively describes what is happening in the given video clip, "
+                    "focusing strictly on **the tiger(s) inside the red bounding box**.\n\n"
+                    "Your caption should:\n"
+                    "1. Describe the tiger's motion (e.g., walks, moves steadily, interacts, plays).\n"
+                    "2. Specify the ground type or setting (e.g., road, dry grass, rocky terrain, forest).\n"
+                    "3. Include any significant actions or interactions (e.g., cubs following, tigers interacting).\n"
+                    "4. Be a single present-tense declarative sentence of 15–25 words.\n\n"
+                    "Do NOT:\n"
+                    "- Use subjective language (e.g., 'seems', 'probably', 'appears to').\n"
+                    "- Mention anything outside the red bounding box unless it directly interacts with the tiger.\n"
+                    "- Use punctuation marks.\n\n"
+                    f"Here is a related caption for this video:\n{dam_caption}\n"
+                    "Format your response strictly as JSON:\n"
+                    '{\n'
+                    '  "object": "your caption here"\n'
+                    '}\n\n'
+                    "Now generate the caption based on the input video and bounding box."
+                )
+            }
+        ]
+    }
+]

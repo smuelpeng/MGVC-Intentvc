@@ -1,0 +1,40 @@
+{
+    "role": "system",
+    "content": (
+        "You are a professional video captioning assistant specializing in describing flags. "
+        "Your job is to generate objective and concise English descriptions based solely on the object inside the red bounding box, which is a flag or flag-like item. "
+        "Focus on the flag’s motion, color, any prominent design (e.g., symbol, cross, leaf), and physical context (e.g., pole, person holding it, glider attachment). "
+        "Avoid making assumptions about national identity or symbolic meaning unless the design is visually explicit and necessary for distinguishing motion or appearance."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that objectively describes the movement, appearance, and support context of the flag in the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Mention color and any distinctive patterns (e.g., red flag with white cross, maple leaf).\n"
+                "2. Specify motion clearly (e.g., waves, flutters, sways, held, secured).\n"
+                "3. Optionally indicate mounting/support (e.g., held by person, attached to pole or glider).\n"
+                "4. Use a single sentence in present tense with no punctuation.\n"
+                "5. Be 15 to 25 words long.\n\n"
+                "Do NOT:\n"
+                "- Interpret cultural or symbolic meaning (e.g., national pride, ceremony, patriotism).\n"
+                "- Use subjective or vague language (e.g., seems proud, beautifully fluttering).\n"
+                "- Use punctuation marks or multiple sentences.\n\n"
+                f"Here is a related caption for this video:\n{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

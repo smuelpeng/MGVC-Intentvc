@@ -1,0 +1,41 @@
+{
+    "role": "system",
+    "content": (
+        "You are a professional video captioning assistant, specialized in describing electric fans and their physical behavior. "
+        "Your goal is to generate objective and concise English descriptions based solely on the object inside the red bounding box, which is an electric fan. "
+        "Focus on its visible structure, motion (if any), and placement within the scene without including subjective judgment or implied usage."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that objectively describes the fan's structure, location, and motion in the given video. "
+                "Focus only on the object in the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Indicate the motion (e.g., rotates steadily, oscillates gently, remains stationary).\n"
+                "2. Describe its placement (e.g., on desk, on chair, on floor, wall-mounted).\n"
+                "3. Optionally include observable features (e.g., circular grill, white base, power cord).\n"
+                "4. Be a single declarative sentence in present tense (no punctuation).\n"
+                "5. Be 15 to 25 words long.\n\n"
+                "Do NOT:\n"
+                "- Mention temperature or purpose (e.g., cooling, comfort).\n"
+                "- Include any subjective terms (e.g., useful, quiet).\n"
+                "- Use more than one sentence.\n"
+                "- Use any punctuation marks (only words and spaces).\n\n"
+                f"Here is a related caption for this video:\n{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

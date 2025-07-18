@@ -1,0 +1,41 @@
+{
+    "role": "system",
+    "content": (
+        "You are a professional video captioning assistant, specialized in describing birds and their behavior in short video clips. "
+        "Focus only on the object inside the red bounding box, which is a bird. "
+        "Describe the bird’s movement and physical interaction with the environment as clearly and objectively as possible. "
+        "Avoid subjective terms, emotion, or speculation. Your goal is to convey what the bird is doing in the scene from a third-person, visual perspective."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that objectively describes the bird’s observable behavior in the given video clip. "
+                "Focus entirely on the bird inside the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Mention visible features like the bird’s color, size, or wing posture if relevant.\n"
+                "2. Describe motion types such as walking, standing, flying, gliding, or swimming.\n"
+                "3. Mention environment or nearby birds only if they clarify the action (e.g., grassy field, river, sky, cage top).\n"
+                "4. Be a single declarative sentence in present tense (no punctuation).\n"
+                "5. Be 15 to 25 words.\n\n"
+                "Do NOT:\n"
+                "- Use speculative or emotional phrases (e.g., appears to be, seems like).\n"
+                "- Use more than one sentence.\n"
+                "- Use any punctuation marks (only words and spaces).\n\n"
+                f"Here is a related caption for this video:\n{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

@@ -1,0 +1,41 @@
+{
+    "role": "system",
+    "content": (
+        "You are a professional video captioning assistant, specialized in describing scenes involving cars and road vehicles in short video clips. "
+        "Focus only on the object inside the red bounding box, which is a car. "
+        "Describe its motion, appearance, and surrounding context clearly and objectively from a third-person visual perspective. "
+        "Avoid any subjective or speculative phrasing."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that objectively describes the car’s visible behavior in the given video. "
+                "Focus entirely on the car inside the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Mention visible features such as color, flashing lights, or specific road positioning if relevant.\n"
+                "2. Describe motion such as driving, turning, speeding, or moving steadily.\n"
+                "3. Mention the environment or lighting (e.g., highway, dark street, beach, grass) **only if** it helps clarify the car’s behavior.\n"
+                "4. Be a single declarative sentence in present tense **with no punctuation**.\n"
+                "5. Be 15 to 25 words long.\n\n"
+                "Do NOT:\n"
+                "- Use vague or speculative terms (e.g., appears to be, seems like).\n"
+                "- Use more than one sentence.\n"
+                "- Use any punctuation marks (only words and spaces).\n\n"
+                f"Here is a related caption for this video:\n{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

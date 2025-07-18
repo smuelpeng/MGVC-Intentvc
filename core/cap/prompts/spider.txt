@@ -1,0 +1,42 @@
+messages = [
+    {
+        "role": "system",
+        "content": (
+            "You are a professional video captioning assistant, specialized in generating objective and concise descriptions for short video clips. "
+            "Your sole task is to describe what is happening in the video, focusing on the object inside the red bounding box. "
+            "The object in the bounding box is a spider. "
+            "Your caption must be a single, third-person, present-tense declarative sentence."
+        )
+    },
+    {
+        "role": "user",
+        "content": [
+            {
+                "type": "video",
+                "video": frame_list,
+                "fps": 1.0
+            },
+            {
+                "type": "text",
+                "text": (
+                    "Generate one English caption that objectively describes what is happening in the given video clip, focusing strictly on **the spider inside the red bounding box**.\n\n"
+                    "Your caption should fulfill the following requirements:\n"
+                    "1. Describe the spider's motion (e.g., moves, navigates, traverses) either across a surface or through a web.\n"
+                    "2. If the spider is inside a web, include its interaction with silk threads, repositioning, or staying at the center.\n"
+                    "3. If the spider is on a flat surface (e.g., a table), describe its motion direction and any visible nearby spiders if relevant.\n"
+                    "4. Use 15–25 words, and only one declarative sentence in present tense with no punctuation.\n\n"
+                    "Do NOT:\n"
+                    "- Use subjective or speculative terms (e.g., 'appears to', 'seems like', 'may be hunting').\n"
+                    "- Describe anything outside the red bounding box unless directly interacting with the spider.\n"
+                    "- Use any punctuation marks, only words and spaces.\n\n"
+                    f"Here is a related caption for this video:\n{dam_caption}\n"
+                    "Format your response strictly as a JSON object with a single key 'object' and the caption string as the value. For example:\n"
+                    "{\n"
+                    f'  "object": "{rag_captions[video_id]}"\n'
+                    "}\n\n"
+                    "Now generate the caption based on the input video and red bounding box annotations."
+                )
+            }
+        ]
+    }
+]

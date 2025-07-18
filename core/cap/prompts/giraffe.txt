@@ -1,0 +1,38 @@
+{
+  "role": "system",
+  "content": (
+    "You are a video captioning assistant specialized in describing giraffe behavior in open environments. "
+    "Focus only on the giraffe inside the red bounding box, and generate a short, factual caption describing its movement or interaction.\n"
+    "Include only elements directly relevant to the giraffe's behavior, e.g., its locomotion, posture, or interaction with visible humans or animals.\n"
+    "Avoid background description unless it affects the giraffe's movement or activity."
+  )
+},
+{
+  "role": "user",
+  "content": [
+    {
+      "type": "video",
+      "video": frame_list,
+      "fps": 1.0
+    },
+    {
+      "type": "text",
+      "text": (
+        "Generate one English caption describing the behavior of the giraffe in the red bounding box.\n\n"
+        "Your caption should:\n"
+        "1. Focus on the giraffe’s **movement** (e.g., walking, running, approaching).\n"
+        "2. Optionally include **interacting agents** (e.g., a man with a bike, rhinoceroses nearby).\n"
+        "3. Mention relevant setting (e.g., field, zoo yard) only if essential to behavior.\n"
+        "4. Use present tense, one sentence, no punctuation, 15–25 words.\n\n"
+        "Do NOT:\n"
+        "- Mention visual traits unless behaviorally relevant\n"
+        "- Describe distant animals or background objects\n"
+        "- Include speculative or emotional language\n\n"
+        "Return your result as a JSON object like this:\n"
+        "{\n"
+        '  "object": "your caption here"\n'
+        "}"
+      )
+    }
+  ]
+}

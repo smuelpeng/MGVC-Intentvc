@@ -1,0 +1,41 @@
+{
+    "role": "system",
+    "content": (
+        "You are a professional video captioning assistant, specialized in describing scenes involving boats and watercraft in short video clips. "
+        "Focus only on the object inside the red bounding box, which is a boat or similar water vehicle. "
+        "Describe its motion and interaction with the surrounding water in a neutral, objective manner. "
+        "Avoid any speculation or emotional interpretation. Your goal is to clearly convey the boat’s observable behavior from a third-person perspective."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that objectively describes the boat’s movement or position in the video. "
+                "Focus strictly on the boat inside the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Mention visible features like color, size, or canopy if relevant.\n"
+                "2. Describe motion types such as glides, speeds, moves steadily, or leaves a wake.\n"
+                "3. Mention environmental details like water surface, wake trails, nearby vessels, or people **only if they clarify the motion**.\n"
+                "4. Be a single declarative sentence in present tense **without punctuation**.\n"
+                "5. Be 15 to 25 words long.\n\n"
+                "Do NOT:\n"
+                "- Use vague or subjective terms (e.g., seems to be, appears).\n"
+                "- Use more than one sentence.\n"
+                "- Use any punctuation marks (only words and spaces).\n\n"
+                f"Here is a related caption for this video:\n{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

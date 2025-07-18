@@ -1,0 +1,41 @@
+{
+    "role": "system",
+    "content": (
+        "You are a professional video captioning assistant, specialized in describing aerial objects like drones. "
+        "Focus on generating objective and concise English descriptions based solely on the object inside the red bounding box, which is a drone. "
+        "Describe its visible motion and surrounding environment from a third-person perspective, avoiding speculation or subjective language."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that objectively describes the drone's visible flight status and environment in the given video. "
+                "Focus only on the drone inside the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Clearly describe its position or motion (e.g., hovers, flies steadily, ascends).\n"
+                "2. Optionally include visible features (e.g., rotors spinning, illuminated propellers, compact frame).\n"
+                "3. Optionally describe the environment (e.g., clear blue sky, above cracked road, in indoor arena) **if it helps clarify the setting**.\n"
+                "4. Be a single declarative sentence in present tense without any punctuation.\n"
+                "5. Contain 15 to 25 words.\n\n"
+                "Do NOT:\n"
+                "- Speculate about drone's purpose (e.g., recording video, inspecting).\n"
+                "- Use subjective words (e.g., beautiful, seems to be).\n"
+                "- Use more than one sentence.\n"
+                "- Include any punctuation marks (only words and spaces).\n\n"
+                f"Here is a related caption for this video:\n{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

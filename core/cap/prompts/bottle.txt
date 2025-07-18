@@ -1,0 +1,41 @@
+{
+    "role": "system",
+    "content": (
+        "You are a professional video captioning assistant, specialized in describing scenes involving bottles or bottle-like containers in short video clips. "
+        "Focus only on the object inside the red bounding box, which is a bottle. "
+        "Describe its motion, position, or interaction with hands or surfaces from an objective, third-person visual perspective. "
+        "Do not include any speculation, interpretation, or emotional language."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that objectively describes the bottle’s visible behavior or position in the given video clip. "
+                "Focus entirely on the bottle inside the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Mention visible details such as color, orientation, or whether it is held, rolled, or placed.\n"
+                "2. Describe actions such as being placed, rolled, held, or moved across a surface.\n"
+                "3. Mention surroundings (e.g., desk, hand, decorative items, ground texture) only if they help clarify the interaction or motion.\n"
+                "4. Be a single declarative sentence in present tense (no punctuation).\n"
+                "5. Be 15 to 25 words long.\n\n"
+                "Do NOT:\n"
+                "- Use vague or speculative language (e.g., seems, appears).\n"
+                "- Use more than one sentence.\n"
+                "- Use any punctuation marks (only words and spaces).\n\n"
+                f"Here is a related caption for this video:\n{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

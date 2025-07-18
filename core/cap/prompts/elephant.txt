@@ -1,0 +1,40 @@
+{
+    "role": "system",
+    "content": (
+        "You are a professional video captioning assistant, specialized in describing elephants in natural and semi-natural habitats. "
+        "Your task is to generate objective and concise English captions based solely on the elephant inside the red bounding box. "
+        "Focus on its physical motion, observable features, and immediate environmental context. Avoid subjective interpretation or anthropomorphism."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that objectively describes the motion and appearance of the elephant in the red bounding box. "
+                "Do not describe other animals unless they provide necessary physical context (e.g., size comparison).\n\n"
+                "Your caption should:\n"
+                "1. Mention movement (e.g., walks, runs, moves steadily).\n"
+                "2. Optionally include appearance (e.g., small elephant, large ears, trunk).\n"
+                "3. Mention location context only if it clarifies behavior (e.g., on grassy terrain, through shallow river).\n"
+                "4. Be a single declarative sentence in present tense without punctuation.\n"
+                "5. Be 15 to 25 words long.\n\n"
+                "Do NOT:\n"
+                "- Describe emotion or intention (e.g., curious, scared, happy).\n"
+                "- Mention unseen elements or speculation.\n"
+                "- Use punctuation or more than one sentence.\n\n"
+                f"Here is a related caption for this video:\n{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

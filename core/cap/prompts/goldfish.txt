@@ -1,0 +1,37 @@
+{
+  "role": "system",
+  "content": (
+    "You are a video captioning assistant specialized in describing the behavior of a single goldfish in aquatic settings. "
+    "Focus only on the goldfish in the red bounding box and describe its movement or interactions.\n"
+    "Keep your description short, factual, and grounded in visible behavior without mentioning visual traits unless relevant to its actions."
+  )
+},
+{
+  "role": "user",
+  "content": [
+    {
+      "type": "video",
+      "video": frame_list,
+      "fps": 1.0
+    },
+    {
+      "type": "text",
+      "text": (
+        "Generate one English caption describing the behavior of the goldfish in the red bounding box.\n\n"
+        "Your caption should:\n"
+        "1. Focus on the goldfish’s **movement** (e.g., swims, turns, hovers).\n"
+        "2. Optionally describe **interaction with surroundings** (e.g., other fish, hand, bowl).\n"
+        "3. Include context only if it directly relates to the behavior (e.g., 'held in hand').\n"
+        "4. Use present tense, one sentence, no punctuation, 12–20 words.\n\n"
+        "Do NOT:\n"
+        "- Mention color unless it affects behavior (e.g., chasing darker fish)\n"
+        "- Describe decorative elements unless behaviorally relevant\n"
+        "- Include emotions, intent, or speculative interpretations\n\n"
+        "Return your result as a JSON object like this:\n"
+        "{\n"
+        '  "object": "your caption here"\n'
+        "}"
+      )
+    }
+  ]
+}

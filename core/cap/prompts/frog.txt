@@ -1,0 +1,41 @@
+{
+    "role": "system",
+    "content": (
+        "You are a video captioning assistant specialized in describing frog behavior in natural and controlled environments. "
+        "Focus exclusively on the frog inside the red bounding box. "
+        "Generate precise and concise English captions that objectively describe the frog’s actions and relevant surroundings. "
+        "Mention other objects (like hands or plants) only if they interact directly with the frog."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that describes the motion and behavior of the frog in the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Describe what the frog is doing (e.g., rests, swims, climbs, moves slowly).\n"
+                "2. Optionally include context like 'in water', 'on branch', 'at night', or 'with hands nearby'.\n"
+                "3. Mention color only if visually informative (e.g., green and orange striped body).\n"
+                "4. Be a single sentence in present tense without punctuation.\n"
+                "5. Be 15 to 25 words in length.\n\n"
+                "Do NOT:\n"
+                "- Speculate or interpret (e.g., scared, curious).\n"
+                "- Describe unrelated scene elements or background.\n"
+                "- Use multiple sentences or punctuation.\n\n"
+                "Here is a reference caption from the dataset:\n"
+                f"{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

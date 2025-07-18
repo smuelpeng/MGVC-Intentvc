@@ -1,0 +1,41 @@
+{
+    "role": "system",
+    "content": (
+        "You are a video captioning assistant specialized in describing basketball-related scenes. "
+        "Your task is to generate an objective and concise English caption focused on the object inside the red bounding box. "
+        "In this case, the object is a basketball or a person interacting with it. "
+        "Describe the object's motion, interaction, or presentation in a natural setting such as a game or performance. "
+        "Ignore speculative details or subjective impressions. Use only visible and clearly observable facts."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that objectively describes what is happening in the video, focusing on the object in the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Describe motion or interaction (e.g., dribbles, rolls, spins, is passed).\n"
+                "2. Include context only if necessary for understanding the activity (e.g., street, court, crowd).\n"
+                "3. Mention observable visual attributes if present (e.g., green basketball, colorful ball, boy in black shirt).\n"
+                "4. Be a single sentence in present tense with 15–25 words.\n"
+                "5. Use no punctuation at all (no commas, periods, etc).\n\n"
+                "Do NOT:\n"
+                "- Use subjective phrasing (e.g., seems like, looks good).\n"
+                "- Speculate beyond what is visually clear.\n"
+                "- Use more than one sentence or any punctuation.\n\n"
+                f"Here is a related caption for this video:\n{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

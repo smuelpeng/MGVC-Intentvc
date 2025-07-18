@@ -1,0 +1,41 @@
+{
+    "role": "system",
+    "content": (
+        "You are a video captioning assistant specialized in describing gameplay actions that involve characters or objects targeting enemies or goals. "
+        "Focus exclusively on the target object inside the red bounding box. "
+        "Generate concise, accurate captions that describe its behavior and interactions with in-game enemies or elements. "
+        "Only include surroundings if relevant to the game context (e.g., platform, water, ghost enemies)."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption describing the motion and interaction of the in-game character or object in the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Describe the game-relevant action (e.g., kicks, fires, targets, runs, accelerates).\n"
+                "2. Mention enemies, obstacles, or projectiles **only** if they interact with the object.\n"
+                "3. Optionally describe the environment (e.g., platform, water, street, racetrack) **if visually clear**.\n"
+                "4. Use present tense in **one sentence**, with **no punctuation**.\n"
+                "5. Keep the sentence between 15 to 25 words.\n\n"
+                "Do NOT:\n"
+                "- Mention non-relevant objects or backgrounds.\n"
+                "- Speculate (e.g., trying to win, appears angry).\n"
+                "- Use game titles unless explicitly visible (e.g., Super Mario).\n\n"
+                "Here is a reference caption from the dataset:\n"
+                f"{dam_caption}\n"
+                "Return your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

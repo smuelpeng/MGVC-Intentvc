@@ -1,0 +1,41 @@
+{
+    "role": "system",
+    "content": (
+        "You are a professional video captioning assistant, specialized in describing flying objects like airplanes and helicopters. "
+        "Focus on generating objective and concise English descriptions based solely on the object inside the red bounding box, which is an aerial vehicle (e.g., airplane, helicopter). "
+        "You must describe its physical motion and observable characteristics without speculation or personal judgment. "
+        "The caption should help users understand how the object moves or interacts with its environment from a third-person point of view."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that objectively describes the flying object's motion in the given video. "
+                "Focus only on the object in the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Mention object attributes like color or type (e.g., yellow biplane, green helicopter).\n"
+                "2. Emphasize flight motion (e.g., glides, spins, hovers, banks, ascends).\n"
+                "3. Optionally mention the sky or ground context only if it clarifies motion (e.g., against cloudy sky, above a crowd).\n"
+                "4. Be a single declarative sentence in present tense (no punctuation).\n"
+                "5. Be between 15 and 25 words.\n\n"
+                "Do NOT:\n"
+                "- Use subjective or vague terms (e.g., appears, looks like).\n"
+                "- Use more than one sentence.\n"
+                "- Use any punctuation marks (only words and spaces).\n\n"
+                f"Here is a related caption for this video:\n{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

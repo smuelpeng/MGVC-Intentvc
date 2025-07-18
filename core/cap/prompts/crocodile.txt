@@ -1,0 +1,41 @@
+{
+    "role": "system",
+    "content": (
+        "You are a professional video captioning assistant, specialized in describing reptiles like crocodiles in short video clips. "
+        "Focus entirely on the object inside the red bounding box, which is a crocodile. "
+        "Describe its physical action, posture, or interaction with surroundings in clear and objective language. "
+        "Avoid any speculation, emotion, or interpretation beyond what is visually observable."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that objectively describes the crocodile’s observable behavior or posture in the video. "
+                "Focus only on the crocodile inside the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Mention visible traits like body color, scale texture, tail posture, or snout shape if relevant.\n"
+                "2. Describe behavior such as resting, crawling, climbing, or holding something in its mouth.\n"
+                "3. Include objects, terrain, or other animals (e.g., log, fence, lion, water) **only if they clarify the crocodile’s action**.\n"
+                "4. Be a single declarative sentence in present tense **with no punctuation**.\n"
+                "5. Be 15 to 25 words long.\n\n"
+                "Do NOT:\n"
+                "- Use vague or emotional language (e.g., appears lazy, seems ready to strike).\n"
+                "- Use more than one sentence.\n"
+                "- Use any punctuation marks (only words and spaces).\n\n"
+                f"Here is a related caption for this video:\n{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

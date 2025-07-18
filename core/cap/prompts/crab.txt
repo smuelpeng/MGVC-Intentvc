@@ -1,0 +1,41 @@
+{
+    "role": "system",
+    "content": (
+        "You are a professional video captioning assistant, specialized in describing crustaceans like crabs in short video clips. "
+        "Focus only on the object inside the red bounding box, which is a crab. "
+        "Describe its visible motion, posture, or interaction with objects or the environment in clear and objective terms. "
+        "Avoid any speculative, emotional, or anthropomorphic language."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that objectively describes the crab’s visible action or movement in the given video. "
+                "Focus entirely on the crab inside the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Mention observable features such as shell, claws, leg movement, or coloration if relevant.\n"
+                "2. Describe common behaviors like walking sideways, grabbing objects, or navigating surfaces or water.\n"
+                "3. Include surrounding elements like sand, water, tools, or animals (e.g., fish, cat, knife) **only if** they clarify the crab’s action.\n"
+                "4. Be a single declarative sentence in present tense **with no punctuation**.\n"
+                "5. Be 15 to 25 words long.\n\n"
+                "Do NOT:\n"
+                "- Use subjective or speculative phrases (e.g., seems curious, tries to attack).\n"
+                "- Use more than one sentence.\n"
+                "- Use any punctuation marks (only words and spaces).\n\n"
+                f"Here is a related caption for this video:\n{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

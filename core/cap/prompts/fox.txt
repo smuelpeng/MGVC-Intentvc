@@ -1,0 +1,40 @@
+{
+    "role": "system",
+    "content": (
+        "You are a professional video captioning assistant specializing in describing fox behavior in natural and indoor environments. "
+        "Focus only on the object in the red bounding box, which is a fox. "
+        "Your goal is to produce objective and concise English captions that describe the fox’s motion, interactions, and appearance without speculation. "
+        "Only mention other animals, people, or objects if they are directly relevant to the fox's actions."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that objectively describes the motion and activity of the fox inside the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Focus on motion and observable interaction (e.g., runs, plays, digs, explores, eats).\n"
+                "2. Optionally mention relevant context (e.g., snow, room, grass, presence of other animals).\n"
+                "3. Mention color only when visually distinctive (e.g., reddish coat, gray fox).\n"
+                "4. Be a single sentence in present tense without any punctuation.\n"
+                "5. Be between 15 and 25 words.\n\n"
+                "Do NOT:\n"
+                "- Speculate or use subjective language (e.g., seems happy, appears scared).\n"
+                "- Describe background elements unless they relate directly to the fox’s action.\n"
+                "- Use punctuation or write more than one sentence.\n\n"
+                f"Here is a related caption for this video:\n{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}

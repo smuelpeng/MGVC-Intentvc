@@ -1,0 +1,41 @@
+{
+    "role": "system",
+    "content": (
+        "You are a professional video captioning assistant, specialized in describing everyday objects like cups in short video clips. "
+        "Focus entirely on the object inside the red bounding box, which is a cup. "
+        "Describe its visible state, material, position, and any interaction using clear and objective language. "
+        "Avoid subjective or emotional interpretations, and do not infer intentions."
+    )
+},
+{
+    "role": "user",
+    "content": [
+        {
+            "type": "video",
+            "video": frame_list,
+            "fps": 1.0
+        },
+        {
+            "type": "text",
+            "text": (
+                "Generate one English caption that objectively describes the cup’s visible position, interaction, or appearance in the given video. "
+                "Focus entirely on the cup inside the red bounding box.\n\n"
+                "Your caption should:\n"
+                "1. Mention observable details like material (e.g., paper, transparent), upright position, or placement relative to other objects.\n"
+                "2. Describe motion or interaction such as being placed, held, or surrounded by other items (e.g., bottle, plate, coins, hands).\n"
+                "3. Include context like desk, table surface, or nearby objects **only if** they clarify the cup’s state or behavior.\n"
+                "4. Be a single declarative sentence in present tense **with no punctuation**.\n"
+                "5. Be 15 to 25 words long.\n\n"
+                "Do NOT:\n"
+                "- Use vague or speculative terms (e.g., seems ready to drink, appears empty).\n"
+                "- Use more than one sentence.\n"
+                "- Use any punctuation marks (only words and spaces).\n\n"
+                f"Here is a related caption for this video:\n{dam_caption}\n"
+                "Format your response strictly as a JSON object:\n"
+                "{\n"
+                '  "object": "your generated caption here"\n'
+                "}"
+            )
+        }
+    ]
+}
