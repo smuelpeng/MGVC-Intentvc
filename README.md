@@ -27,7 +27,8 @@ export PYTHONPATH=./:$PYTHONPATH
 For a local environment, all Python dependencies are listed in [requirements.txt.all](requirements.txt.all).
 
 ## Model Preparation
-Please place the model weights and config files as follows (**Note:** We are currently uploading the required model files. The links and instructions will be updated in this GitHub repository soon.):
+Please place the model weights and config files as follows (**Note:** We are currently uploading the required model files. ~~The links and instructions will be updated in this GitHub repository soon.):~~
+You can download model weights from DropBox [Model](https://www.dropbox.com/scl/fo/rpqjrrffy5obmpe3w2r92/AHcSFh7IcW8EFeRu-48iZcU?rlkey=u7mr5a2fnljueu4j4ciycua12&st=27nm20ro&dl=0)
 ```
 models/
 ├── RAG_similarity.pth # RAG sim cache
@@ -52,7 +53,6 @@ python run_caption.py
 ## Run Filtering and Rerank
 Filtering and reranking are handled by `core/selector/selector.py`, which can Reproduction our result on leaderboard.
 
-**Note:** We are currently uploading the required model files. The links and instructions will be updated in this GitHub repository soon.
 
 You can run the script as follows:
 ```bash
